@@ -61,7 +61,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
  }' 'http://localhost:8080/api/user/1234'
 ```
 
-### PATCH API Example
+### PATCH API Example change
 
 This updates the `fuelConsumption` and `hardStops` fields from the user created above.
 
