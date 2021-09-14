@@ -17,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11      
-      run: docker build . -t openhackzhp5net5acr.azurecr.io/user-java
+      run: docker build . --file apis/user-java/Dockerfile -t openhackzhp5net5acr.azurecr.io/user-java
