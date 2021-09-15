@@ -1,0 +1,26 @@
+name: user-java-api CD
+
+on:
+  push:
+    branches: [ master ]
+    paths: 
+     'apis/user-java/**'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+    - uses: azure/docker-login@v1
+      with:
+        login-server: openhackzhp5net5acr.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+        
+    - run: |
+        docker build . -t openhackzhp5net5acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
+        docker push openhackzhp5net5acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
