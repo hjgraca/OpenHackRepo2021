@@ -27,4 +27,3 @@ jobs:
         context: ./apis/poi
         push: true
         tags: openhackzhp5net5acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
-diff --git a/.github/workflows/poi-ci.yml b/.github/workflows/poi-ci.yml
