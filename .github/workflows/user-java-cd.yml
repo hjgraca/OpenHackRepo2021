@@ -1,8 +1,10 @@
-name: Docker Image CI
+name: user-java-api CD
 
 on:
   push:
     branches: [ master ]
+    paths: 
+     'apis/user-java/**'
 
 jobs:
 
@@ -18,7 +20,7 @@ jobs:
         login-server: openhackzhp5net5acr.azurecr.io
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
-
+        
     - run: |
-        docker build . -t yourACRname.azurecr.io/appdb:${{ github.sha }}
-        docker push yourACRname.azurecr.io/appdb:${{ github.sha }}
+        docker build . -t openhackzhp5net5acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
+        docker push openhackzhp5net5acr.azurecr.io/devopsoh/api-user-java:${{ github.sha }}
