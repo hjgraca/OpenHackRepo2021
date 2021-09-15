@@ -27,4 +27,3 @@ jobs:
         context: ./apis/trips
         push: true
         tags: openhackzhp5net5acr.azurecr.io/devopsoh/api-trips:${{ github.sha }}
-diff --git a/.github/workflows/trips-ci.yml b/.github/workflows/trips-ci.yml
