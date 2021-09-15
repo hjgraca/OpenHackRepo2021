@@ -34,6 +34,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_COMMIT_SHA: ${{ github.sha }}
         GITHUB_REPO_OWNER: 'swizeri'
-        GITHUB_REPO_NAME: 'OpenHackRepo2021'
+        GITHUB_REPOSITORY: 'OpenHackRepo2021'
         GITHUB_ISSUE_TITLE: 'Demo''ing Git Issue Creation'
         GITHUB_ISSUE_BODY: 'java-user build failed'
+        GITHUB_OWNER: 'OpenHackTraining'
+        GITHUB_SHA: ${{ github.sha }}
