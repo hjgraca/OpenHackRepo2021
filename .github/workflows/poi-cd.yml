@@ -1,0 +1,30 @@
+name: poi-api CD
+
+on:
+  push:
+    branches: [ master ]
+    paths: 
+     'apis/poi/**'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      uses: azure/docker-login@v1
+      with:
+        login-server: openhackzhp5net5acr.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+        
+    - uses: docker/build-push-action@v2
+      with:
+        file: ./apis/poi/Dockerfile
+        context: ./apis/poi
+        push: true
+        tags: openhackzhp5net5acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
+diff --git a/.github/workflows/poi-ci.yml b/.github/workflows/poi-ci.yml
