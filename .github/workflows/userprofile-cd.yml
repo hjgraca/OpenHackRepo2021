@@ -27,4 +27,3 @@ jobs:
         context: ./apis/userprofile
         push: true
         tags: openhackzhp5net5acr.azurecr.io/devopsoh/api-userprofile:${{ github.sha }}
-diff --git a/.github/workflows/useprofile-ci.yml b/.github/workflows/useprofile-ci.yml
