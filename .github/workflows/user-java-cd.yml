@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-    - uses: azure/docker-login@v1
+      uses: azure/docker-login@v1
       with:
         login-server: openhackzhp5net5acr.azurecr.io
         username: ${{ secrets.ACR_USERNAME }}
