@@ -1,0 +1,37 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: poi-api CI
+
+on:
+  pull_request:    
+    branches: [ master ]
+    paths: 
+     'apis/poi/**'
+    
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Docker Image - API
+      uses: docker/build-push-action@v2
+      with:
+        file: ./apis/poi/Dockerfile
+        context: ./apis/poi
+        tags: openhackzhp5net5acr.azurecr.io/poi      
+    - name: Git Issue Creation
+      if: ${{ failure() }}  
+      run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Issue created due to workflow failure: ${{ github.run_id }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n due to failure in run: _${{ github.run_id }}_."
+            }'
+diff --git a/.github/workflows/trips-cd.yml b/.github/workflows/trips-cd.yml
